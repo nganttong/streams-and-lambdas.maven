@@ -14,6 +14,8 @@ import java.util.stream.Stream;
  * @ATTENTION_TO_STUDENTS You are FORBIDDEN from using loops of any sort within the definition of this class.
  */
 public final class PersonFactory {
+    private Person person;
+
     public PersonFactory() {
         /** this class is not to be instantiated */
     }
@@ -37,18 +39,22 @@ public final class PersonFactory {
      *
      * @param listSize - number of Person objects to create
      * @return - ArrayList of Person objects
-     */ // TODO
+     */
     public List<Person> createPersonList(int listSize) {
-        return null;
+        List<Person> listOfPeople = Stream
+                .generate(this::createRandomPerson)
+                .limit(listSize)
+                .collect(Collectors.toList());
+        return listOfPeople;
     }
 
 
     /**
      * @param arrayLength - number of Person objects to create
      * @return - Array of Person objects
-     */ // TODO
+     */
     public Person[] createPersonArray(int arrayLength) {
-        return null;
+        return createPersonList(arrayLength).toArray(new Person[0]);
     }
 
 
@@ -59,6 +65,8 @@ public final class PersonFactory {
      * @return - Stream representation of collection of Person objects
      */ // TODO
     public Stream<Person> createPersonStream(int streamCount) {
-        return null;
+        return Stream
+                .generate(this::createRandomPerson)
+                .limit(streamCount);
     }
 }
