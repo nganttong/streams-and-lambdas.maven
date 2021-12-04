@@ -63,7 +63,7 @@ public final class PersonFactory {
      *
      * @param streamCount - number of Person objects to create
      * @return - Stream representation of collection of Person objects
-     */ // TODO
+     */
     public Stream<Person> createPersonStream(int streamCount) {
         return Stream
                 .generate(this::createRandomPerson)
